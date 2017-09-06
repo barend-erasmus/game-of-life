@@ -73,21 +73,27 @@ function display(grounds: number[][]): void {
     element.innerHTML = html;
 }
 
-function start() {
+let interval = null;
+let grounds: number[][] = null;
 
-    let grounds: number[][] = makeArray(150, 150, 0);
+function initialize() {
+    grounds = makeArray(150, 150, 0);
 
     for (let x = 0; x < grounds.length; x++)
         for (let y = 0; y < grounds[0].length; y++)
             grounds[x][y] = Math.random() > 0.5 ? 1 : 0;
 
     display(grounds);
+}
 
-    setInterval(() => {
+function start() {
+    interval = setInterval(() => {
         grounds = processMatrix(grounds);
         display(grounds);
     }, 200);
 
 }
 
-start();
+function pause() {
+    clearInterval(interval);
+}
