@@ -86,16 +86,29 @@ export let interval = null;
 export let grounds: number[][] = null;
 
 export function initialize() {
+    
+    document.getElementById("btn-start").removeAttribute('disabled');
+    document.getElementById("btn-reinitialize").removeAttribute('disabled');
+    document.getElementById("btn-pause").setAttribute('disabled', 'disabled');
+
     grounds = makeArray(75, 75, 0);
 
+
     for (let y = 0; y < grounds.length; y++)
-        for (let x = 0; x < grounds[0].length; y++)
+        for (let x = 0; x < grounds[0].length; x++) {
             grounds[y][x] = Math.random() > 0.5 ? 1 : 0;
+        }
 
     display(grounds);
 }
 
 export function start() {
+
+    document.getElementById("btn-pause").removeAttribute('disabled');
+    document.getElementById("btn-reinitialize").setAttribute('disabled', 'disabled');
+    document.getElementById("btn-start").setAttribute('disabled', 'disabled');
+
+
     interval = setInterval(() => {
         grounds = processMatrix(grounds);
         display(grounds);
@@ -104,5 +117,11 @@ export function start() {
 }
 
 export function pause() {
+
+    document.getElementById("btn-start").removeAttribute('disabled');
+    document.getElementById("btn-reinitialize").removeAttribute('disabled');
+    document.getElementById("btn-pause").setAttribute('disabled', 'disabled');
+
+
     clearInterval(interval);
 }

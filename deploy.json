@@ -1,0 +1,22 @@
+{
+    "machine": {
+        "host": "$host",
+        "username": "$username",
+        "password": "$password"
+    },
+    "commands": [
+        "sudo service nginx reload"
+    ],
+    "directories": [
+        {
+            "source": "$workspace/src",
+            "destination": "/opt/game-of-life"
+        }
+    ],
+    "files": [
+        {
+            "source": "$workspace/nginx.conf",
+            "destination": "/etc/nginx/sites-enabled/game-of-life"
+        }
+    ]
+}

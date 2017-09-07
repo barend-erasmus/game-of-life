@@ -47,15 +47,18 @@
 
                 </div>
                 <br />
-                <button class="btn btn-primary" onclick="GameOfLife.start()">Start</button>
-                <button class="btn btn-primary" onclick="GameOfLife.pause()">Pause</button>
+                <button id="btn-start" disabled class="btn btn-primary" onclick="GameOfLife.start()">Start</button>
+                <button id="btn-reinitialize" disabled class="btn btn-primary" onclick="GameOfLife.initialize()">Reinitialize</button>
+                <button id="btn-pause" disabled class="btn btn-primary pull-right" onclick="GameOfLife.pause()">Pause</button>
             </div>
         </div>
     </div>
 </body>
-<script src="./../bundle.js"></script>
+<script src="./bundle.js"></script>
 <script>
-    GameOfLife.initialize();
+    (function () {
+        GameOfLife.initialize();
+    })();
 </script>
 
 </html>
