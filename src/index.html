@@ -42,15 +42,33 @@
                 </div>
             </div>
         </nav>
+        <div class="jumbotron">
+            <h1>Conway's Game of Life</h1>
+            <p>The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John
+                Horton Conway in 1970.</p>
+        </div>
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div id="box">
 
                 </div>
                 <br />
+                <label id="lb-number-of-alive-cells">Alive Cells</label>
+                <br />
                 <button id="btn-start" disabled class="btn btn-primary" onclick="GameOfLife.start()">Start</button>
                 <button id="btn-reinitialize" disabled class="btn btn-primary" onclick="GameOfLife.initialize()">Reinitialize</button>
                 <button id="btn-pause" disabled class="btn btn-primary pull-right" onclick="GameOfLife.pause()">Pause</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>Rules</h3>
+                <ul>
+                    <li>Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.</li>
+                    <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+                    <li>Any live cell with more than three live neighbours dies, as if by overpopulation.</li>
+                    <li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -60,6 +78,7 @@
     (function () {
         GameOfLife.initialize();
     })();
+
 </script>
 
 </html>

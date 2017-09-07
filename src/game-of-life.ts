@@ -9,17 +9,17 @@ export function makeArray(h: number, w: number, val: number): number[][] {
     return arr;
 }
 
-export function processMatrix(matrix: number[][]): number[][] {
-    const newMatrix: number[][] = makeArray(matrix.length, matrix[0].length, 0);
+export function processMatrix(grid: number[][]): number[][] {
+    const newGrid: number[][] = makeArray(grid.length, grid[0].length, 0);
 
-    for (let y = 0; y < matrix.length; y++)
-        for (let x = 0; x < matrix[0].length; x++) {
-            const numberOfNeighbours: number = getNumberOfNeighbours(x, y, matrix);
+    for (let y = 0; y < grid.length; y++)
+        for (let x = 0; x < grid[0].length; x++) {
+            const numberOfNeighbours: number = getNumberOfNeighbours(x, y, grid);
 
-            newMatrix[y][x] = getNewCellState(matrix[y][x], numberOfNeighbours);
+            newGrid[y][x] = getNewCellState(grid[y][x], numberOfNeighbours);
         }
 
-    return newMatrix;
+    return newGrid;
 }
 
 export function getNewCellState(currentState: number, numberOfNeighbours: number): number {
@@ -40,46 +40,62 @@ export function getNumberOfNeighbours(x: number, y: number, grid: number[][]): n
     let neighbours: number = 0;
 
     if (x > 0 && y > 0 && grid[y - 1][x - 1]) {
-        ++neighbours;
+        neighbours ++;
     }
     if (x > 0 && grid[y][x - 1]) {
         ++neighbours;
     }
     if (x > 0 && y < grid.length - 1 && grid[y + 1][x - 1]) {
-        ++neighbours;
+        neighbours ++;
     }
     if (y > 0 && grid[y - 1][x]) {
-        ++neighbours;
+        neighbours ++;
     }
     if (y < grid.length - 1 && grid[y + 1][x]) {
-        ++neighbours;
+        neighbours ++;
     }
     if (y > 0 && x < grid[0].length - 1 && grid[y - 1][x + 1]) {
-        ++neighbours;
+        neighbours ++;
     }
     if (x < grid[0].length - 1 && grid[y][x + 1]) {
-        ++neighbours;
+        neighbours ++;
     }
     if (x < grid[0].length - 1 && y < grid.length - 1 && grid[y + 1][x + 1]) {
-        ++neighbours;
+        neighbours ++;
     }
     return neighbours;
 }
 
-export function display(grounds: number[][]): void {
-    const html: string = `<table>${grounds.map((x) => {
-        return `<tr>${x.map((y) => {
-            if (y === 1) {
-                return '<td class="alive"></td>';
-            } else {
-                return '<td></td>';
+export function display(grid: number[][]): void {
+
+    let numberOfCellsAlive: number = 0;
+
+    const rowStrings: string[] = [];
+    
+    for (const row of grid) {
+        const columnStrings: string[] = [];
+
+        for (const column of row) {
+            if (column === 1) {
+                numberOfCellsAlive ++;
+                columnStrings.push(`<td class="alive"></td>`);
+            }else {
+                columnStrings.push(`<td class="dead"></td>`);
             }
-        }).join('')}</tr>`;
-    }).join('')}</table>`;
+        }
 
-    const element = document.getElementById("box");
+        rowStrings.push(`<tr>${columnStrings.join()}</tr>`);
+    }
 
-    element.innerHTML = html;
+    const html: string = `<table>${rowStrings.join()}</table>`;
+
+    const box = document.getElementById("box");
+
+    const lbNumberOfAliveCells = document.getElementById('lb-number-of-alive-cells');
+
+    lbNumberOfAliveCells.innerHTML = `Alive Cells: ${numberOfCellsAlive.toString()}`;
+
+    box.innerHTML = html;
 }
 
 export let interval = null;
