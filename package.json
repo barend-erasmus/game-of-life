@@ -1,0 +1,28 @@
+{
+  "name": "game-of-life",
+  "version": "1.0.0",
+  "description": "Conway's Game of Life, also known as the Game of Life or simply Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970. It is the best-known example of a cellular automaton.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc & browserify ./src/game-of-life.js --s GameOfLife -o ./src/bundle.js",
+    "test": "tsc & mocha ./src/**/*.test.js",
+    "coverage": "tsc & istanbul cover node_modules/mocha/bin/_mocha --root ./src ./src/**/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barend-erasmus/game-of-life.git"
+  },
+  "author": "Barend Erasmus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/barend-erasmus/game-of-life/issues"
+  },
+  "homepage": "https://github.com/barend-erasmus/game-of-life#readme",
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^8.0.24",
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
+  }
+}
