@@ -77,7 +77,7 @@ let interval = null;
 let grounds: number[][] = null;
 
 function initialize() {
-    grounds = makeArray(150, 150, 0);
+    grounds = makeArray(75, 75, 0);
 
     for (let x = 0; x < grounds.length; x++)
         for (let y = 0; y < grounds[0].length; y++)

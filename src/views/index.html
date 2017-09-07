@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Bootstrap Example</title>
+    <title>Conway's Game of Life</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -21,17 +21,42 @@
 </style>
 
 <body>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                        aria-controls="navbar">
+                              <span class="sr-only">Toggle navigation</span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                            </button>
+                    <a class="navbar-brand" href="#">Conway's Game of Life</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div id="box">
 
-    <div id="box">
-
+                </div>
+                <br />
+                <button class="btn btn-primary" onclick="start()">Start</button>
+                <button class="btn btn-primary" onclick="pause()">Pause</button>
+            </div>
+        </div>
     </div>
-    <button onclick="start()">Start</button>
-    <button onclick="pause()">Pause</button>
-
 </body>
 <script src="./../game-of-life.js"></script>
 <script>
     initialize();
+
 </script>
 
 </html>
