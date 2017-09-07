@@ -84,10 +84,10 @@ export function display(grid: number[][]): void {
             }
         }
 
-        rowStrings.push(`<tr>${columnStrings.join()}</tr>`);
+        rowStrings.push(`<tr>${columnStrings.join('')}</tr>`);
     }
 
-    const html: string = `<table>${rowStrings.join()}</table>`;
+    const html: string = `<table>${rowStrings.join('')}</table>`;
 
     const box = document.getElementById("box");
 
