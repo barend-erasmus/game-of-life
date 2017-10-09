@@ -70,17 +70,23 @@ export function display(grid: number[][]): void {
 
     let numberOfCellsAlive: number = 0;
 
+    const width = document.getElementById("box").parentElement.clientWidth;
+    const height = width;
+
     const canvas: any = document.getElementById("box");
+    canvas.width = width;
+    canvas.height = height;
+
     const ctx = canvas.getContext("2d");
 
-    const cellSize = 300 / grid[0].length;
-
+    const cellSize = width / grid[0].length;
+    
     for (let row = 0; row < grid.length; row ++) {
         for (let column = 0; column < grid[row].length; column ++) {
             if (grid[row][column] === 1) {
                 numberOfCellsAlive++;
 
-                ctx.fillStyle = '#323232';
+                ctx.fillStyle = 'black';
                 ctx.fillRect(column * cellSize, row * cellSize, cellSize, cellSize);
             } else {
                 ctx.fillStyle = '#ffffff';
@@ -122,7 +128,7 @@ export function start() {
     interval = setInterval(() => {
         grounds = processMatrix(grounds);
         display(grounds);
-    }, 100);
+    }, 250);
 
 }
 

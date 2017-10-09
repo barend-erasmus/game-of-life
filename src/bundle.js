@@ -66,14 +66,18 @@ function getNumberOfNeighbours(x, y, grid) {
 exports.getNumberOfNeighbours = getNumberOfNeighbours;
 function display(grid) {
     let numberOfCellsAlive = 0;
+    const width = document.getElementById("box").parentElement.clientWidth;
+    const height = width;
     const canvas = document.getElementById("box");
+    canvas.width = width;
+    canvas.height = height;
     const ctx = canvas.getContext("2d");
-    const cellSize = 300 / grid[0].length;
+    const cellSize = width / grid[0].length;
     for (let row = 0; row < grid.length; row++) {
         for (let column = 0; column < grid[row].length; column++) {
             if (grid[row][column] === 1) {
                 numberOfCellsAlive++;
-                ctx.fillStyle = '#323232';
+                ctx.fillStyle = 'black';
                 ctx.fillRect(column * cellSize, row * cellSize, cellSize, cellSize);
             }
             else {
@@ -107,7 +111,7 @@ function start() {
     exports.interval = setInterval(() => {
         exports.grounds = processMatrix(exports.grounds);
         display(exports.grounds);
-    }, 100);
+    }, 250);
 }
 exports.start = start;
 function pause() {
