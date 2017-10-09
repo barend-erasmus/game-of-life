@@ -1,3 +1,4 @@
 {
-    "title": "Conway's Game of Life"
+    "title": "Conway's Game of Life",
+    "htmlPage": "https://raw.githubusercontent.com/barend-erasmus/game-of-life/master/src/page.html"
 }

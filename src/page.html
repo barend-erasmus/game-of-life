@@ -1,0 +1,38 @@
+<h1>Conway's Game of Life</h1>
+<p>Conway's Game of Life, also known as the Game of Life or simply Life, is a cellular automaton devised by the British mathematician
+    John Horton Conway in 1970. It is the best-known example of a cellular automaton.</p>
+<p>Conway's Game of Life consists of a square grid containing dead or alive cells. The behaviour of each cell is dependent on
+    the state of its 8 immediate neighbours, according to the following rules:</p>
+<ul>
+    <li>Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.</li>
+    <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+    <li>Any live cell with more than three live neighbours dies, as if by overpopulation.</li>
+    <li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+</ul>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <canvas id="box" width="300" height="300">
+            Your browser does not support the canvas element.
+        </canvas>
+        <br />
+        <label id="lb-number-of-alive-cells">Alive Cells</label>
+        <br />
+        <select id="select-pattern" onchange="GameOfLife.selectPattern()" class="form-control">
+            <option value="random">Random</option>
+            <option value="blinker">Blinker</option>
+            <option value="toad">Toad</option>
+            <option value="beacon">Beacon</option>
+            <option value="pentadecathlon">Pentadecathlon</option>
+            <option value="glider">Glider</option>
+        </select>
+        <br />
+        <button id="btn-start" disabled class="btn btn-primary" onclick="GameOfLife.start()">Start</button>
+        <button id="btn-pause" disabled class="btn btn-primary pull-right" onclick="GameOfLife.pause()">Pause</button>
+    </div>
+</div>
+<script src="https://cdn.rawgit.com/barend-erasmus/game-of-life/master/src//bundle.js"></script>
+<script>
+    (function () {
+        GameOfLife.initialize();
+    })();
+</script>
