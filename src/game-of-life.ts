@@ -104,7 +104,7 @@ export let grounds: number[][] = null;
 export function initialize() {
 
     document.getElementById("btn-start").removeAttribute('disabled');
-    document.getElementById("btn-load-pattern").removeAttribute('disabled');
+    document.getElementById("select-pattern").removeAttribute('disabled');
     document.getElementById("btn-pause").setAttribute('disabled', 'disabled');
 
     grounds = makeArray(75, 75, 0);
@@ -120,20 +120,20 @@ export function initialize() {
 export function start() {
 
     document.getElementById("btn-pause").removeAttribute('disabled');
-    document.getElementById("btn-load-pattern").setAttribute('disabled', 'disabled');
+    document.getElementById("select-pattern").setAttribute('disabled', 'disabled');
     document.getElementById("btn-start").setAttribute('disabled', 'disabled');
 
     interval = setInterval(() => {
         grounds = processMatrix(grounds);
         display(grounds);
-    }, 200);
+    }, 500);
 
 }
 
 export function pause() {
 
     document.getElementById("btn-start").removeAttribute('disabled');
-    document.getElementById("btn-load-pattern").removeAttribute('disabled');
+    document.getElementById("select-pattern").removeAttribute('disabled');
     document.getElementById("btn-pause").setAttribute('disabled', 'disabled');
 
     clearInterval(interval);
@@ -150,6 +150,12 @@ export function selectPattern() {
             [0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0],
         ],
+        toad: [
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 1, 1, 1, 0],
+            [0, 1, 1, 1, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+        ],
         beacon: [
             [0, 0, 0, 0, 0, 0],
             [0, 1, 1, 0, 0, 0],
@@ -157,6 +163,18 @@ export function selectPattern() {
             [0, 0, 0, 1, 1, 0],
             [0, 0, 0, 1, 1, 0],
             [0, 0, 0, 0, 0, 0],
+        ],
+        pentadecathlon: [
+            [0, 0, 0, 0, 0],
+            [0, 1, 1, 1, 0],
+            [0, 1, 0, 1, 0],
+            [0, 1, 1, 1, 0],
+            [0, 1, 1, 1, 0],
+            [0, 1, 1, 1, 0],
+            [0, 1, 1, 1, 0],
+            [0, 1, 0, 1, 0],
+            [0, 1, 1, 1, 0],
+            [0, 0, 0, 0, 0],
         ],
         glider: [
             [0, 0, 0, 0, 0],
