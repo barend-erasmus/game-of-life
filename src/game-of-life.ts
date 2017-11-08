@@ -79,7 +79,7 @@ export function display(grid: number[][]): void {
 
     const ctx = canvas.getContext("2d");
 
-    const cellSize = width / grid[0].length;
+    const cellSize = Math.floor(width / grid[0].length);
     
     for (let row = 0; row < grid.length; row ++) {
         for (let column = 0; column < grid[row].length; column ++) {
@@ -101,7 +101,7 @@ export function display(grid: number[][]): void {
 }
 
 export let interval = null;
-export let grounds: number[][] = null;
+export let grid: number[][] = null;
 
 export function initialize() {
 
@@ -109,14 +109,14 @@ export function initialize() {
     document.getElementById("select-pattern").removeAttribute('disabled');
     document.getElementById("btn-pause").setAttribute('disabled', 'disabled');
 
-    grounds = makeArray(75, 75, 0);
+    grid = makeArray(75, 75, 0);
 
-    for (let y = 0; y < grounds.length; y++)
-        for (let x = 0; x < grounds[0].length; x++) {
-            grounds[y][x] = Math.random() > 0.5 ? 1 : 0;
+    for (let y = 0; y < grid.length; y++)
+        for (let x = 0; x < grid[0].length; x++) {
+            grid[y][x] = Math.random() > 0.5 ? 1 : 0;
         }
 
-    display(grounds);
+    display(grid);
 }
 
 export function start() {
@@ -126,8 +126,8 @@ export function start() {
     document.getElementById("btn-start").setAttribute('disabled', 'disabled');
 
     interval = setInterval(() => {
-        grounds = processMatrix(grounds);
-        display(grounds);
+        grid = processMatrix(grid);
+        display(grid);
     }, 250);
 
 }
@@ -188,25 +188,25 @@ export function selectPattern() {
     };
 
     if (name === 'random') {
-        for (let y = 0; y < grounds.length; y++)
-            for (let x = 0; x < grounds[0].length; x++) {
-                grounds[y][x] = Math.random() > 0.5 ? 1 : 0;
+        for (let y = 0; y < grid.length; y++)
+            for (let x = 0; x < grid[0].length; x++) {
+                grid[y][x] = Math.random() > 0.5 ? 1 : 0;
             }
     } else {
 
         const pattern: number[][] = patterns[name];
 
-        grounds = makeArray(75, 75, 0);
+        grid = makeArray(75, 75, 0);
 
         const yOffset: number = Math.floor((75 - pattern.length) / 2);
         const xOffset: number = Math.floor((75 - pattern[0].length) / 2);
 
         for (let y = 0; y < pattern.length; y++) {
             for (let x = 0; x < pattern[y].length; x++) {
-                grounds[y + yOffset][x + xOffset] = pattern[y][x];
+                grid[y + yOffset][x + xOffset] = pattern[y][x];
             }
         }
     }
 
-    display(grounds);
+    display(grid);
 }
